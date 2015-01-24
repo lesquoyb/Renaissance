@@ -12,7 +12,11 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 abstract class ElementJeu  {  
 
 	protected Texture texture;
+<<<<<<< HEAD
 	protected Body body; 
+=======
+	protected Body body;
+>>>>>>> origin/master
 	protected FixtureDef fixturedef;
 	protected BodyDef bodydef;
 	
