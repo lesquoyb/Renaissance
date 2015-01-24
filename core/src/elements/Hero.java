@@ -3,50 +3,32 @@ package elements;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.math.Matrix3;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 
 public class Hero extends Personnages {
 
-	public static final int velocity = 100;
-	public static final float GRAVITE = 980.1f;
+	public static final int velocity = 150;
+	public static final float GRAVITE = 98.01f;
 	public Vector2 jump = new Vector2();
-	private final Vector2 newJump = new Vector2(128,1500);
-	public float x; 
-	public float y;
-	public Vector3 move;
+	private static final Vector2 jumpUp = new Vector2(0,250);
+	private boolean jumping = false;
+	
+	
 	public Hero(String s, float x, float y) {
-		super(s, x, y);
-		move = new Vector3();
-		this.x = x;
-		this.y = y;
-
-
-		
+		super(s, x, y);		
 	}
 	
 	
 	public void update(float delta)
 	{
-		TiledMapTileLayer layerSol =(TiledMapTileLayer) GameMap.map.getLayers().get("sol");
-		float largeurTile = layerSol.getTileWidth();
-		float hauteurTile = layerSol.getTileHeight();
+		
 		int caseX;
 		int caseY;
 		int caseX2;
 		int caseY2;
-		float oldX = x;
-		
-		if (jump.x > 0){
-			float deltaX = newJump.x * delta;
-			x += deltaX;
-			jump.sub(new Vector2(deltaX,0));
-		}
-		
+
 		if ( jump.y > 0){
-			float deltaY  = newJump.y * delta;
+			float deltaY  = jumpUp.y * delta*2;
 			y += deltaY;
 			jump.sub(new Vector2(0,deltaY));		
 		}
@@ -55,26 +37,24 @@ public class Hero extends Personnages {
 		{
 			x -= velocity * delta;	
 		}
-		caseX = (int)x/(int)largeurTile;
-		caseY = (int)y/(int)hauteurTile;
-		if(layerSol.getCell(caseX, caseY) != null ){
-			x = (caseX+1)*largeurTile ;
+		caseX = (int)x/(int)GameMap.largeurTile;
+		caseY = (int)y/(int)GameMap.hauteurTile;
+		if(GameMap.layerSol.getCell(caseX, caseY) != null ){
+			x = (caseX+1)*GameMap.largeurTile ;
 		}
 				
 		if(Gdx.input.isKeyPressed(Keys.RIGHT))
 		{
 			x += velocity * delta;
 		}
-		caseX = (int)x+texture.getWidth()/(int)largeurTile;
-		caseY = (int)y/(int)hauteurTile;
+		caseX = (int)x+texture.getWidth()/(int)GameMap.largeurTile;
+		caseY = (int)y/(int)GameMap.hauteurTile;
 		caseY2 = caseY + 1;
-		if(layerSol.getCell(caseX, caseY) != null  ){
-			x = (caseX-1)*largeurTile;
-			System.out.println("x1 " + x);
+		if(GameMap.layerSol.getCell(caseX, caseY) != null  ){
+			x = (caseX-1)*GameMap.largeurTile;
 		}
-		if(layerSol.getCell(caseX, caseY2) != null){
-			x = (caseX) * largeurTile;
-			System.out.println("x2 :" + x);
+		if(GameMap.layerSol.getCell(caseX, caseY2) != null){
+			x = (caseX) * GameMap.largeurTile;
 		}
 	
 		
@@ -83,48 +63,41 @@ public class Hero extends Personnages {
 		{
 			y -= velocity * delta;
 		}
-		caseX = (int)x/(int)largeurTile;
+		caseX = (int)x/(int)GameMap.largeurTile;
 		caseX2 = caseX+1;
-		caseY = (int)y/(int)hauteurTile;
-		if(layerSol.getCell(caseX, caseY) != null || layerSol.getCell(caseX2, caseY) != null){
-			y = (caseY+1)*hauteurTile;
+		caseY = (int)y/(int)GameMap.hauteurTile;
+		if(GameMap.layerSol.getCell(caseX, caseY) != null || GameMap.layerSol.getCell(caseX2, caseY) != null){
+			y = (caseY+1)*GameMap.hauteurTile;
+			jumping = false;
 		}
-		y -= GRAVITE * delta;
+		y -= GRAVITE * delta*2;
 		
 		//check collisions
 
-		caseX = (int)x/(int)largeurTile;
-		caseY = (int)y/(int)hauteurTile;
+		caseX = (int)x/(int)GameMap.largeurTile;
+		caseY = (int)y/(int)GameMap.hauteurTile;
 		caseX2 = caseX+1;
 
 
-		if(layerSol.getCell(caseX, caseY) != null || layerSol.getCell(caseX2, caseY) != null){
-			y = (caseY+1)*hauteurTile;
+		if(GameMap.layerSol.getCell(caseX, caseY) != null || GameMap.layerSol.getCell(caseX2, caseY) != null){
+			y = (caseY+1)*GameMap.hauteurTile;
+			jumping = false;
 		}
 		
 		
 		if(Gdx.input.isKeyJustPressed(Keys.SPACE))
 		{
-			System.out.println(jump.x +" " + jump.y);
-			if(jump.x <= 0 && jump.y <= 0){
-				float newX = x;
-
-				if (newX -oldX < 0 ){
-					jump = new Vector2(-128,1500);	
-				}
-				else if (newX - oldX == 0){
-					jump = new Vector2(0,1500);	
-				}
-				else{
-					jump = newJump;	
-				}
+			if(!jumping){
+				jumping = true;
+				jump = jumpUp.cpy();	
 			}
 		}
-		caseX = (int)x/(int)largeurTile;
+		caseX = (int)x/(int)GameMap.largeurTile;
 		caseX2 = caseX +1;
-		caseY = (int)y+texture.getHeight()/(int)hauteurTile;
-		if(layerSol.getCell(caseX, caseY) != null || layerSol.getCell(caseX2, caseY) != null ){
-			y = (caseY-1)*hauteurTile;
+		caseY = (int)y+texture.getHeight()/(int)GameMap.hauteurTile;
+		if(GameMap.layerSol.getCell(caseX, caseY) != null || GameMap.layerSol.getCell(caseX2, caseY) != null ){
+			y = (caseY-1)*GameMap.hauteurTile;
+			jumping = false;
 		}
 
 		
@@ -138,34 +111,5 @@ public class Hero extends Personnages {
 	@Override
 	public void update()
 	{
-		
-		/*
-		move = new Vector3(body.getPosition().x,body.getPosition().y,0);
-		
-		if(Gdx.input.isKeyPressed(Keys.LEFT))
-		{
-			body.applyForce(new Vector2(-10,0), new Vector2(body.getPosition().x-texture.getWidth(),body.getPosition().y-texture.getHeight()), true);
-			//body.setLinearVelocity(-10,0);
-			
-		}
-		
-		else if(Gdx.input.isKeyPressed(Keys.RIGHT))
-		{
-			body.applyForce(new Vector2(10,0), new Vector2(body.getPosition().x-texture.getWidth(),body.getPosition().y-texture.getHeight()), true);
-			//body.setLinearVelocity(10,0);
-		}
-		
-		else if(Gdx.input.isKeyPressed(Keys.UP))
-		{
-			body.applyForce(new Vector2(0,10), new Vector2(body.getPosition().x-texture.getWidth(),body.getPosition().y-texture.getHeight()), true);
-			//body.setLinearVelocity(0,10);
-		}
-		
-		else if(Gdx.input.isKeyPressed(Keys.DOWN))
-		{
-			body.applyForce(new Vector2(0,-10), new Vector2(body.getPosition().x-texture.getWidth(),body.getPosition().y-texture.getHeight()), true);
-			//body.setLinearVelocity(0,-10);
-		}
-		*/
 	}
 }

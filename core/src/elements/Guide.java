@@ -1,6 +1,5 @@
 package elements;
 
-import com.badlogic.gdx.math.Vector2;
 
 public class Guide extends Enemy {
 
@@ -16,7 +15,7 @@ public class Guide extends Enemy {
 		//float x,y;
 		
 
-	if(body.getPosition().x > xCible)
+	if(x > xCible)
 	{
 		xCible = -var;
 		yCible = -var;
@@ -32,8 +31,8 @@ public class Guide extends Enemy {
 		
 		//y = yCible - body.getPosition().y;
 		
-		body.applyForce(new Vector2(xCible,yCible), new Vector2(body.getPosition().x-texture.getWidth(),body.getPosition().y-texture.getHeight()), true);
-		
+		//body.applyForce(new Vector2(xCible,yCible), new Vector2(body.getPosition().x-texture.getWidth(),body.getPosition().y-texture.getHeight()), true);
+		//TODO
 	
 		
 		//xCible = body.getPosition().x;

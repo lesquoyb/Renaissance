@@ -2,35 +2,31 @@ package elements;
 
 import java.util.ArrayList;
 
-import renaissance.World;
-
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
 
 public class GameMap  {
 
 	public OrthogonalTiledMapRenderer renderer;
 	public static TiledMap map;
-	private Box2DDebugRenderer rendererD;
 	public static ArrayList<Body> obstacles;
+	public static TiledMapTileLayer layerSol;
+	public static float largeurTile;
+	public static float hauteurTile ;
 	
 	public GameMap(String file){
-		//rendererD = new Box2DDebugRenderer();
 		obstacles = new ArrayList<Body>();
 		map = new TmxMapLoader().load(file);
 		renderer = new OrthogonalTiledMapRenderer(map);
+		layerSol =(TiledMapTileLayer) GameMap.map.getLayers().get("sol");
 		TiledMapTileLayer collisionLayer = (TiledMapTileLayer)map.getLayers().get("sol");
+		largeurTile = layerSol.getTileWidth();
+		hauteurTile = layerSol.getTileHeight();
+		/*
         float largeur = collisionLayer.getTileHeight();
         float hauteur = collisionLayer.getTileWidth();
 		for (int x = 0; x < collisionLayer.getWidth(); x++) {
@@ -51,6 +47,7 @@ public class GameMap  {
 	            }
 	        }
 		}
+		*/
 		
 	}
 
