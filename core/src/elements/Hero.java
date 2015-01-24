@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Hero extends Personnages {
 
-	public static final int velocity = 150;
+	public static final int velocity = 180;
 	public static final float GRAVITE = 98.01f;
 	public Vector2 jump = new Vector2();
 	private static final Vector2 jumpUp = new Vector2(0,256);
