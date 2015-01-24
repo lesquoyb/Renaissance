@@ -1,5 +1,7 @@
 package renaissance;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -9,12 +11,15 @@ import com.badlogic.gdx.physics.box2d.Box2D;
 
 import elements.GameMap;
 import elements.Hero;
+import elements.Guide;
 
 public class World implements Screen{
 	
 	//public static com.badlogic.gdx.physics.box2d.World world;
 	public static SpriteBatch spriteBatch;
 	private Hero hero;
+	private Guide g1;
+
 //	private ArrayList<Enemy> enemies;
 	private OrthographicCamera cam;
 	public static GameMap map;
@@ -27,6 +32,9 @@ public class World implements Screen{
 		//world = new com.badlogic.gdx.physics.box2d.World(new Vector2(0.f,-9.81f), true);
 		spriteBatch = new SpriteBatch();
 		hero = new Hero("pacman",0,0);
+		
+
+		
 //		enemies = new ArrayList<Enemy>();
 		cam = new OrthographicCamera();
 		
@@ -52,6 +60,10 @@ public class World implements Screen{
 	//		}
 				
 		spriteBatch.end();
+		SpriteBatch sb = new SpriteBatch();
+		sb.begin();
+		map.renderContent(sb);
+		sb.end();
 		
 
 		cam.position.set(hero.x ,hero.y,0);
@@ -62,6 +74,7 @@ public class World implements Screen{
 	
 	public void update(float delta){
 		hero.update(delta);
+		map.update(delta);
 		//for (Enemy it : enemies) {
 		//			it.update();
 		//		}
@@ -95,6 +108,7 @@ public class World implements Screen{
 		hero.dispose();
 		map.dispose();
 		spriteBatch.dispose();
+
 //		for(Enemy it : enemies){
 //			it.dispose();
 //		}
