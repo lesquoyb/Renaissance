@@ -34,7 +34,7 @@ public class World implements Screen{
 
 	@Override
 	public void render(float delta) {
-		// TODO Auto-generated method stub
+		world.step(12, 6, 2);
 		spriteBatch.begin();
 		for (GameMap it : maps) {
 			it.render();
@@ -53,30 +53,25 @@ public class World implements Screen{
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
 		for (GameMap it : maps){
 			it.dispose();
 		}
