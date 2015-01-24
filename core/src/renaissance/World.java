@@ -37,28 +37,30 @@ public class World implements Screen{
 		cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight() );
 
 		map = new TmxMapLoader().load("maps/map1.tmx");
-		renderer = new OrthogonalTiledMapRenderer(map,1/32f);
-		renderer.setView(cam);
+		renderer = new OrthogonalTiledMapRenderer(map);
 	}
 
 	@Override
 	public void render(float delta) {
 		
 		world.step(12, 6, 2);
+		renderer.setView(cam);
+		renderer.render();
 		spriteBatch.setProjectionMatrix(cam.projection);
 		spriteBatch.begin();
-			//hero.render(spriteBatch);
+			hero.render(spriteBatch);
 			
 	//		for (Enemy it : enemies) {
 	//			it.render();
 	//		}
 				
 		spriteBatch.end();
-		//renderer.render();
+		
 	}
 
 	@Override
 	public void resize(int width, int height) {
+		cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight() );
 	}
 
 	@Override
