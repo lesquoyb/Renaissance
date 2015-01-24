@@ -4,14 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2D;
 
 import elements.GameMap;
 import elements.Hero;
+import elements.Obstacle;
 
 public class World implements Screen{
 	
@@ -21,6 +19,7 @@ public class World implements Screen{
 //	private ArrayList<Enemy> enemies;
 	private OrthographicCamera cam;
 	private GameMap map;
+	private Obstacle o;
 
 	
 	@Override
@@ -36,7 +35,7 @@ public class World implements Screen{
 	//	maps.add(new GameMap("maps/test.tmx"));
 		cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		map = new GameMap("maps/map1.tmx");
-		
+		o = new Obstacle("obstacle", 0, -100);
 	}
 
 	@Override
@@ -44,12 +43,13 @@ public class World implements Screen{
 		
 		update();
 		
+		
 		world.step(12, 6, 2);
 		map.render(cam);
 		spriteBatch.setProjectionMatrix(cam.projection);
 		spriteBatch.begin();
 			hero.render(spriteBatch);
-			
+			o.render(spriteBatch);
 	//		for (Enemy it : enemies) {
 	//			it.render();
 	//		}
@@ -58,7 +58,9 @@ public class World implements Screen{
 	}
 
 	
+	
 	public void update(){
+		o.update();
 		hero.update();
 		//for (Enemy it : enemies) {
 		//			it.update();
