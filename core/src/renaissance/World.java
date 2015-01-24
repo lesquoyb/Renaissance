@@ -18,7 +18,7 @@ public class World implements Screen{
 	private Hero hero;
 //	private ArrayList<Enemy> enemies;
 	private OrthographicCamera cam;
-	private GameMap map;
+	public static GameMap map;
 	private Obstacle o;
 
 	
@@ -41,10 +41,14 @@ public class World implements Screen{
 	@Override
 	public void render(float delta) {
 		
-		update();
+		update(delta);
+		
+		//world.step(12, 6, 2);
+		
+		//map.unproject(cam);
 		
 		
-		world.step(12, 6, 2);
+		
 		map.render(cam);
 		spriteBatch.setProjectionMatrix(cam.projection);
 		spriteBatch.begin();
@@ -55,13 +59,17 @@ public class World implements Screen{
 	//		}
 				
 		spriteBatch.end();
+		
+
+		cam.position.set(hero.x ,hero.y,0);
+		cam.update();
 	}
 
 	
 	
-	public void update(){
+	public void update(float delta){
 		o.update();
-		hero.update();
+		hero.update(delta);
 		//for (Enemy it : enemies) {
 		//			it.update();
 		//		}
@@ -71,6 +79,8 @@ public class World implements Screen{
 	@Override
 	public void resize(int width, int height) {
 		cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight() );
+		cam.viewportHeight = height;
+		cam.viewportWidth = width;
 	}
 
 	@Override

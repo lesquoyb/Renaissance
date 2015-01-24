@@ -32,7 +32,7 @@ abstract class ElementJeu  {
 
 	public void render(SpriteBatch s)
 	{
-		s.draw(texture,body.getPosition().x  - texture.getWidth()/2,body.getPosition().y - texture.getHeight()/2);
+	//	s.draw(texture,body.getPosition().x  - texture.getWidth()/2,body.getPosition().y - texture.getHeight()/2);
 	}
 	
 	public abstract void update();

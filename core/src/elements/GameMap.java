@@ -10,6 +10,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
@@ -20,12 +21,12 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 public class GameMap  {
 
 	public OrthogonalTiledMapRenderer renderer;
-	public TiledMap map;
+	public static TiledMap map;
 	private Box2DDebugRenderer rendererD;
-	public ArrayList<Body> obstacles;
+	public static ArrayList<Body> obstacles;
 	
 	public GameMap(String file){
-		rendererD = new Box2DDebugRenderer();
+		//rendererD = new Box2DDebugRenderer();
 		obstacles = new ArrayList<Body>();
 		map = new TmxMapLoader().load(file);
 		renderer = new OrthogonalTiledMapRenderer(map);
@@ -45,8 +46,8 @@ public class GameMap  {
 	            	bDef.position.x = x*largeur;
 	            	bDef.position.y = y*hauteur;
 	            	Body body = World.world.createBody(bDef);
-	            	body.createFixture(fDef);
-	            	obstacles.add(body);
+	            	//body.createFixture(fDef);
+	            	//obstacles.add(body);
 	            }
 	        }
 		}
@@ -54,18 +55,10 @@ public class GameMap  {
 	}
 
 	
-	public void update() {
-		
-	}
-
-	
 	public void render(OrthographicCamera cam) {
 		renderer.setView(cam);
 		renderer.render();
-		rendererD.render(World.world, cam.projection);
-		
-		World.spriteBatch.begin();
-		World.spriteBatch.end();
+	
 	}
 
 
