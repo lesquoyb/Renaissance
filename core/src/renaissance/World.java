@@ -14,7 +14,7 @@ import elements.Obstacle;
 public class World implements Screen{
 	
 	public static com.badlogic.gdx.physics.box2d.World world;
-	private SpriteBatch spriteBatch;
+	public static SpriteBatch spriteBatch;
 	private Hero hero;
 //	private ArrayList<Enemy> enemies;
 	private OrthographicCamera cam;
@@ -35,7 +35,7 @@ public class World implements Screen{
 	//	maps.add(new GameMap("maps/test.tmx"));
 		cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		map = new GameMap("maps/map1.tmx");
-		o = new Obstacle("obstacle", 0, -100);
+		o = new Obstacle("obstacle", 0, -100,100,500);
 	}
 
 	@Override

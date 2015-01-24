@@ -6,7 +6,7 @@ public class Obstacle extends Objets{
 
 	
 	
-	public Obstacle(String s, float x, float y) {
+	public Obstacle(String s, float x, float y,float largeur,float hauteur) {
 		super(s, x, y);
 		franchissable = false;
 	}

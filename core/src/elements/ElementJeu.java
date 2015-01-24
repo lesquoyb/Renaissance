@@ -23,7 +23,7 @@ abstract class ElementJeu  {
 		texture = TextureFactory.getTexture(s);
 		bodydef = new BodyDef();
 		bodydef.position.x = x;
-		bodydef.position.y = y;
+		bodydef.position.y = y ;
 		fixturedef = new FixtureDef();
 		PolygonShape shape = new PolygonShape();
 		shape.setAsBox(texture.getWidth()/2, texture.getHeight()/2);
@@ -32,7 +32,7 @@ abstract class ElementJeu  {
 
 	public void render(SpriteBatch s)
 	{
-		s.draw(texture,body.getPosition().x,body.getPosition().y);
+		s.draw(texture,body.getPosition().x  - texture.getWidth()/2,body.getPosition().y - texture.getHeight()/2);
 	}
 	
 	public abstract void update();
