@@ -12,9 +12,9 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 abstract class ElementJeu  {  
 
 	protected Texture texture;
-	protected Body body; 
-	protected FixtureDef fixturedef;
-	protected BodyDef bodydef;
+	public Body body; 
+	public FixtureDef fixturedef;
+	public BodyDef bodydef;
 
 	
 	public ElementJeu(String s, float x, float y)

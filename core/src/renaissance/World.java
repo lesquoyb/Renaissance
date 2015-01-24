@@ -36,12 +36,15 @@ public class World implements Screen{
 	//	maps.add(new GameMap("maps/test.tmx"));
 		cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		map = new TmxMapLoader().load("maps/map1.tmx");
+		
 		renderer = new OrthogonalTiledMapRenderer(map);
 		renderer.setView(cam);
 	}
 
 	@Override
 	public void render(float delta) {
+		
+		update();
 		
 		world.step(12, 6, 2);
 		renderer.setView(cam);
@@ -57,6 +60,15 @@ public class World implements Screen{
 		spriteBatch.end();
 	}
 
+	
+	public void update(){
+		hero.update();
+		//for (Enemy it : enemies) {
+		//			it.update();
+		//		}
+	}
+	
+	
 	@Override
 	public void resize(int width, int height) {
 		cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight() );
@@ -80,6 +92,10 @@ public class World implements Screen{
 	@Override
 	public void dispose() {
 		hero.dispose();
+		map.dispose();
+		renderer.dispose();
+		world.dispose();
+		spriteBatch.dispose();
 //		for(Enemy it : enemies){
 //			it.dispose();
 //		}
