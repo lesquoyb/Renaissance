@@ -12,20 +12,15 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 abstract class ElementJeu  {  
 
 	protected Texture texture;
-<<<<<<< HEAD
 	protected Body body; 
-=======
-	protected Body body;
->>>>>>> origin/master
 	protected FixtureDef fixturedef;
 	protected BodyDef bodydef;
-	
-	public ElementJeu(){
-		
-	}
+
 	
 	public ElementJeu(String s, float x, float y)
 	{
+		
+		texture = TextureFactory.getTexture(s);
 		bodydef = new BodyDef();
 		bodydef.position.x = x;
 		bodydef.position.y = y;
@@ -35,12 +30,12 @@ abstract class ElementJeu  {
 		fixturedef.shape = shape;
 	}
 
-	void render(SpriteBatch s)
+	public void render(SpriteBatch s)
 	{
 		s.draw(texture,body.getPosition().x,body.getPosition().y);
 	}
 	
-	abstract void update();
+	public abstract void update();
 	
 	
 	

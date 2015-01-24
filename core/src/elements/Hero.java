@@ -3,9 +3,6 @@ package elements;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.World;  
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Hero extends Personnages {
 
@@ -15,7 +12,8 @@ public class Hero extends Personnages {
 		
 	}
 
-	void update()
+	@Override
+	public void update()
 	{
 		if(Gdx.input.isKeyPressed(Keys.LEFT))
 		{
