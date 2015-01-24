@@ -34,8 +34,7 @@ public class World implements Screen{
 		
 //		maps.add(new GameMap("maps/map1.tmx"));
 	//	maps.add(new GameMap("maps/test.tmx"));
-		cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		
+		cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		map = new TmxMapLoader().load("maps/map1.tmx");
 		renderer = new OrthogonalTiledMapRenderer(map,1/32f);
 		renderer.setView(cam);
@@ -59,6 +58,7 @@ public class World implements Screen{
 
 	@Override
 	public void resize(int width, int height) {
+		cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight() );
 	}
 
 	@Override
