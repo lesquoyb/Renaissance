@@ -15,7 +15,7 @@ public class Hero extends Personnages {
 		
 	}
 
-	void Maj()
+	void update()
 	{
 		if(Gdx.input.isKeyPressed(Keys.LEFT))
 		{

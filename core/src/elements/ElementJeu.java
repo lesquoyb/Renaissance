@@ -35,12 +35,12 @@ abstract class ElementJeu  {
 		fixturedef.shape = shape;
 	}
 
-	void Afficher(SpriteBatch s)
+	void render(SpriteBatch s)
 	{
 		s.draw(texture,body.getPosition().x,body.getPosition().y);
 	}
 	
-	abstract void Maj();
+	abstract void update();
 	
 	
 	
