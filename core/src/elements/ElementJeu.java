@@ -42,7 +42,7 @@ abstract class ElementJeu  {
 	//	s.draw(texture,body.getPosition().x  - texture.getWidth()/2,body.getPosition().y - texture.getHeight()/2);
 	}
 	
-	public abstract void update();
+	public abstract void update(float delta);
 	
 	public void dispose(){
 		texture.dispose();

@@ -18,7 +18,7 @@ public class Hero extends Personnages {
 		super(s, x, y);		
 	}
 	
-	
+	@Override
 	public void update(float delta)
 	{
 		
@@ -108,8 +108,6 @@ public class Hero extends Personnages {
 		sb.draw(texture,0,0);
 	}
 	
-	@Override
-	public void update()
-	{
-	}
+	
+	
 }

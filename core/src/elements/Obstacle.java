@@ -20,7 +20,7 @@ public class Obstacle extends Objets{
 
 
 	@Override
-	public void update() { /* do nothing */	}
+	public void update(float delta) { /* do nothing */	}
 
 	@Override
 	public void dispose() {
