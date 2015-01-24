@@ -16,7 +16,7 @@ public class World implements Screen{
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		spriteBatch.begin();
+		spriteBatch = new SpriteBatch();
 		maps = new ArrayList<GameMap>();
 //		hero = new Hero();
 //		enemies = new ArrayList<Enemy>();
@@ -28,7 +28,7 @@ public class World implements Screen{
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
-		spriteBatch = new SpriteBatch();
+		spriteBatch.begin();
 		for (GameMap it : maps) {
 			it.render();
 		}
