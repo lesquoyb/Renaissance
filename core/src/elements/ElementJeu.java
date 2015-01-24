@@ -37,6 +37,10 @@ abstract class ElementJeu  {
 	
 	public abstract void update();
 	
+	public void dispose(){
+		texture.dispose();
+	}
+	
 	
 	
 }
