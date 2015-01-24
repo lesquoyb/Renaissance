@@ -18,9 +18,7 @@ public class RenaissanceGame extends Game {
    public static final PovDirection BUTTON_DPAD_LEFT = PovDirection.west;
 	@Override
 	public void create () {
-		if (Controllers.getControllers().size > 0){
-			controller = Controllers.getControllers().get(0);
-		}
+		controller = Controllers.getControllers().get(0);
 		setScreen(new TitleScreen());
 	}
 
@@ -54,8 +52,8 @@ public class RenaissanceGame extends Game {
 		}
 		return Gdx.input.isKeyPressed(Keys.DOWN) ;
 	}
- 
 
+	
 	public static boolean isLeftPressed(){
 		if(controller != null){
 			if(controller.getButton(BUTTON_DPAD_LEFT.ordinal())){
