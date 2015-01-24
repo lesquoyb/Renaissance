@@ -36,7 +36,7 @@ public class World implements Screen{
 	//	maps.add(new GameMap("maps/test.tmx"));
 		cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		map = new TmxMapLoader().load("maps/map1.tmx");
-		renderer = new OrthogonalTiledMapRenderer(map,1/32f);
+		renderer = new OrthogonalTiledMapRenderer(map);
 		renderer.setView(cam);
 	}
 
@@ -44,16 +44,17 @@ public class World implements Screen{
 	public void render(float delta) {
 		
 		world.step(12, 6, 2);
+		renderer.setView(cam);
+		renderer.render();
 		spriteBatch.setProjectionMatrix(cam.projection);
 		spriteBatch.begin();
-			//hero.render(spriteBatch);
+			hero.render(spriteBatch);
 			
 	//		for (Enemy it : enemies) {
 	//			it.render();
 	//		}
 				
 		spriteBatch.end();
-		//renderer.render();
 	}
 
 	@Override
