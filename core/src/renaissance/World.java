@@ -1,7 +1,6 @@
 package renaissance;
 
-import java.util.ArrayList;
-
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -35,10 +34,11 @@ public class World implements Screen{
 		
 //		maps.add(new GameMap("maps/map1.tmx"));
 	//	maps.add(new GameMap("maps/test.tmx"));
-		cam.setToOrtho(true, 500,500 );
+		cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight() );
 
-		map = new TmxMapLoader().load("maps/test.tmx");
-		renderer = new OrthogonalTiledMapRenderer(map);
+		map = new TmxMapLoader().load("maps/map1.tmx");
+		renderer = new OrthogonalTiledMapRenderer(map,1/32f);
+		renderer.setView(cam);
 	}
 
 	@Override
@@ -47,14 +47,14 @@ public class World implements Screen{
 		world.step(12, 6, 2);
 		spriteBatch.setProjectionMatrix(cam.projection);
 		spriteBatch.begin();
-			hero.render(spriteBatch);
+			//hero.render(spriteBatch);
 			
 	//		for (Enemy it : enemies) {
 	//			it.render();
 	//		}
 				
 		spriteBatch.end();
-		renderer.render();
+		//renderer.render();
 	}
 
 	@Override

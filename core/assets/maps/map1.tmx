@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="30" tilewidth="32" tileheight="32" nextobjectid="3">
+ <tileset firstgid="1" name="BG" tilewidth="32" tileheight="32">
+  <image source="BG.png" width="1000" height="750"/>
+ </tileset>
+ <tileset firstgid="714" name="1" tilewidth="32" tileheight="32">
+  <image source="1.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="730" name="2" tilewidth="32" tileheight="32">
+  <image source="2.png" width="128" height="128"/>
+ </tileset>
+ <layer name="fond" width="50" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt10PQmFcYgNH8sW3btm3btm3btm3bduo2KIMyLJM2Tnu666bTzfd3lXfmrJ+5mDtzQ8KECROWcIQnAhGJRGSiEJVoRCcGMYlFbOIQl3jEJwEJSURikpCUZCQnBSGh0ExNGtKSjvRkICOZyEwWspKN7OQgJ7nITR7yko/8FKAghShMEYpSjOKh1AztNfxf+xQaZ/xf9yolqQJu/1/79c97VYKSAbdLUZoylKUc5alARSpRmSpUpRrVqUFNalGbOtSlHvVpQEMa0ZgmNKUZzWkRcLslrWhNG9rSjvZ0oCOd6EwXutKN7vSgJ73oTR/60o/+DGAggxjMEIYyjOEBt0cwklGMZgxjGcd4JjCRSUxmClOZxnRmMJNZzGYOc5nHfBawkEUsZglLWRZwezkrWMkqVrOGtaxjPRvYyCY2s4WtbGM7O9jJLnazh73sYz8HOMghDnOEowG3j3GcE5zkFKc5w1nOcZ4LXOQSl7nCO7zLe7zPB3zIR3zMJ1zlGte5wad8xucBt7/gS77iJre4zR2+5hu+5Tu+5wfuco/7POAhj/iRn/iZX/iV33jME37nD57yLOD2c17wkle85g1/8vcDH0JYwhGeCEQkEpGJQlSiEZ0YxCQWsYlDXOIRnwQkJFFIsO3EJCEpyUhOClKSitSkIS3pSE8GMpKJzGQhK9nITg5ykovc5CEv+chPAQoG3C5EYYpQlGIUpwQlKUVpylCWcpSnAhWpRGWqUJVqVKcGNalFbepQl3rUp0HA7YY0ojFNaEozmtOClrSiNW1oSzva04GOdKIzXehKN7rTg570ojd96Es/+gfcHsBABjGYIQxlGMMZwUhGMZoxjGUc45nARCYxmSlMZRrTmcFMZjGbOcxlXsDt+SxgIYtYzBKWsozlrGAlq1jNGtayjvVsYCOb2MwWtrKN7exgJ7vYzR72Btzex34OcJBDHOYIRznGcU5wklOc5gxnOcd5LnCRS1zmCu/wLu/xPh/wIR/xccDtT7jKNa5zg0/5jM/5gi/5ipvc4jZ3+Jpv+Jbv+J4fuMs97vOAhzziR37iZ34JuP0rv/GYJ/zOHzzlGc95wUte8Zo3/Mnfn4cQwhKO8EQgIpGITBSiEo3oxCAmscIG245NHOISj/gkICGJSEwSkpKM5KQgJalITRrSko70ZCAjmchMFrKSjezkIGfA7VzkJg95yUd+ClCQQhSmCEUpRnFKUJJSlKYMZSlHeSpQkUpUpgpVqUZ1agTcrkktalOHutSjPg1oSCMa04SmNKM5LWhJK1rThra0oz0d6EgnOtOFrnSje8DtHvSkF73pQ1/60Z8BDGQQgxnCUIYxnBGMZBSjGcNYxjGeCUxkEpOZwlSmBdyezgxmMovZzGEu85jPAhayiMUsYSnLWM4KVrKK1axhLetYzwY2sonNbGFrwO1tbGcHO9nFbvawl33s5wAHOcRhjnCUYxznBCc5xWnOcJZznOcCF7nEZa4E3H47b+ft/Pv8BV/OMao=
+  </data>
+ </layer>
+ <layer name="sol" width="50" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztxzcKwFAQxNDl3/+Ezjncwiq3dLugB4KZCEmSJEmSJEn6p2sRPQ00tlo/74lmWmgt9vPeaKeDzmI/74tueugt9vP+AB+csbE=
+  </data>
+ </layer>
+ <objectgroup name="sol">
+  <object id="2" x="0" y="832" width="1677" height="176"/>
+ </objectgroup>
+</map>
