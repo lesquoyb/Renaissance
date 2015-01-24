@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class World implements Screen{
+	private SpriteBatch spriteBatch;
 	private ArrayList<GameMap> maps;
 //	private Hero hero;
 //	private ArrayList<Enemy> enemies;
@@ -14,6 +16,7 @@ public class World implements Screen{
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
+		spriteBatch.begin();
 		maps = new ArrayList<GameMap>();
 //		hero = new Hero();
 //		enemies = new ArrayList<Enemy>();
@@ -25,9 +28,20 @@ public class World implements Screen{
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
+		spriteBatch = new SpriteBatch();
 		for (GameMap it : maps) {
 			it.render();
 		}
+//		hero.render();
+//		for (Enemy it : enemies) {
+//			it.render();
+//		}
+		
+
+		
+		
+		
+		spriteBatch.end();
 	}
 
 	@Override
@@ -59,5 +73,9 @@ public class World implements Screen{
 		for (GameMap it : maps){
 			it.dispose();
 		}
+//		hero.dispose();
+//		for(Enemy it : enemies){
+//			it.dispose();
+//		}
 	}
 }
