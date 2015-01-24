@@ -10,6 +10,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2D;
 
+import elements.GameMap;
 import elements.Hero;
 
 public class World implements Screen{
@@ -19,9 +20,8 @@ public class World implements Screen{
 	private Hero hero;
 //	private ArrayList<Enemy> enemies;
 	private OrthographicCamera cam;
+	private GameMap map;
 
-	private TiledMap map;
-	private OrthogonalTiledMapRenderer renderer;
 	
 	@Override
 	public void show() {
@@ -35,10 +35,8 @@ public class World implements Screen{
 //		maps.add(new GameMap("maps/map1.tmx"));
 	//	maps.add(new GameMap("maps/test.tmx"));
 		cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		map = new TmxMapLoader().load("maps/map1.tmx");
+		map = new GameMap("maps/map1.tmx");
 		
-		renderer = new OrthogonalTiledMapRenderer(map);
-		renderer.setView(cam);
 	}
 
 	@Override
@@ -47,8 +45,7 @@ public class World implements Screen{
 		update();
 		
 		world.step(12, 6, 2);
-		renderer.setView(cam);
-		renderer.render();
+		map.render(cam);
 		spriteBatch.setProjectionMatrix(cam.projection);
 		spriteBatch.begin();
 			hero.render(spriteBatch);
@@ -93,7 +90,6 @@ public class World implements Screen{
 	public void dispose() {
 		hero.dispose();
 		map.dispose();
-		renderer.dispose();
 		world.dispose();
 		spriteBatch.dispose();
 //		for(Enemy it : enemies){
