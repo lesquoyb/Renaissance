@@ -5,8 +5,6 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 public class GameMap{
-	
-	
 	private TiledMap map;
 	private OrthogonalTiledMapRenderer renderer;
 	
