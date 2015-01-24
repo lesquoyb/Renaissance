@@ -17,15 +17,18 @@ public class GameMap  {
 	public static TiledMapTileLayer layerSol;
 	public static float largeurTile;
 	public static float hauteurTile ;
+	public OrthographicCamera cam;
 	
 	public GameMap(String file){
 		obstacles = new ArrayList<Body>();
 		map = new TmxMapLoader().load(file);
-		renderer = new OrthogonalTiledMapRenderer(map);
+		renderer = new OrthogonalTiledMapRenderer(map,1/32f);
+		cam = new OrthographicCamera();
+		cam.setToOrtho(false, 50, 30);
 		layerSol =(TiledMapTileLayer) GameMap.map.getLayers().get("sol");
-		TiledMapTileLayer collisionLayer = (TiledMapTileLayer)map.getLayers().get("sol");
 		largeurTile = layerSol.getTileWidth();
 		hauteurTile = layerSol.getTileHeight();
+		
 		/*
         float largeur = collisionLayer.getTileHeight();
         float hauteur = collisionLayer.getTileWidth();
@@ -52,7 +55,8 @@ public class GameMap  {
 	}
 
 	
-	public void render(OrthographicCamera cam) {
+	public void render() {
+		cam.update();
 		renderer.setView(cam);
 		renderer.render();
 	

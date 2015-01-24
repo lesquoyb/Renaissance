@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 public class Hero extends Personnages {
 
 	public static final int velocity = 180;
-	public static final float GRAVITE = 98.01f;
+	public static final float GRAVITE = 9.801f;
 	public Vector2 jump = new Vector2();
 	private static final Vector2 jumpUp = new Vector2(0,256);
 	private boolean jumping = false;
@@ -61,6 +61,7 @@ public class Hero extends Personnages {
 		
 		if(Gdx.input.isKeyPressed(Keys.DOWN))
 		{
+			System.out.println("lolo");
 			y -= velocity * delta;
 		}
 		caseX = (int)x/(int)GameMap.largeurTile;
@@ -77,7 +78,7 @@ public class Hero extends Personnages {
 		caseX = (int)x/(int)GameMap.largeurTile;
 		caseY = (int)y/(int)GameMap.hauteurTile;
 		caseX2 = caseX+1;
-
+		System.out.println(x + " y: " + y);
 
 		if(GameMap.layerSol.getCell(caseX, caseY) != null || GameMap.layerSol.getCell(caseX2, caseY) != null){
 			y = (caseY+1)*GameMap.hauteurTile;
