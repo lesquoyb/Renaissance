@@ -4,6 +4,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Guide extends Enemy {
 
+	float var=150,xCible=var,yCible=var;
+	
 	public Guide(String s, float x, float y) {
 		super(s, x, y);
 
@@ -11,18 +13,35 @@ public class Guide extends Enemy {
 	
 	@Override
 	public void update(){
-		float x,y;
-		float xCible=15,yCible=0;
+		//float x,y;
 		
-		x = xCible - body.getPosition().x;
 
-		xCible = body.getPosition().x;
+	if(body.getPosition().x > xCible)
+	{
+		xCible = -var;
+		yCible = -var;
+	}
+	else{
+		xCible = var;
+		yCible = var;
+	}
+	
 		
-		y = yCible - body.getPosition().y;
-
-		yCible = body.getPosition().y;
 		
-		body.applyForce(new Vector2(x,y), new Vector2(body.getPosition().x-texture.getWidth(),body.getPosition().y-texture.getHeight()), true);
+		//x = xCible - body.getPosition().x;
+		
+		//y = yCible - body.getPosition().y;
+		
+		body.applyForce(new Vector2(xCible,yCible), new Vector2(body.getPosition().x-texture.getWidth(),body.getPosition().y-texture.getHeight()), true);
+		
+	
+		
+		//xCible = body.getPosition().x;
+		
+		//yCible = body.getPosition().y;
+		
+		
+		//body.applyForceToCenter(x, y, true);//.applyForce(new Vector2(x,y), new Vector2(body.getPosition().x-texture.getWidth(),body.getPosition().y-texture.getHeight()), true);
 		
 	}
 	

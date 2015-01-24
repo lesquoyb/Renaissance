@@ -49,6 +49,18 @@ public class World implements Screen{
 		
 		
 		
+<<<<<<< HEAD
+=======
+		world.step(12, 6, 2);
+//		cam.position.x = hero.body.getPosition().x;		
+//		cam.update();
+//		cam.position.set(hero.bodydef.position.x/2.f, hero.bodydef.position.y/2.f, 0);
+//		cam.position.set(hero.body.getPosition().x /2.f, hero.body.getPosition().y / 2.f, 0);
+//		cam.lookAt(hero.body.getPosition().x, hero.body.getPosition().y, 0);
+//		cam.update();
+	    
+		
+>>>>>>> origin/master
 		map.render(cam);
 		spriteBatch.setProjectionMatrix(cam.projection);
 		spriteBatch.begin();
