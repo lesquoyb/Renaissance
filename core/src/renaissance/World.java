@@ -26,7 +26,7 @@ public class World implements Screen{
 		Box2D.init();
 		world = new com.badlogic.gdx.physics.box2d.World(new Vector2(0.f,-9.81f), true);
 		spriteBatch = new SpriteBatch();
-		hero = new Hero("pacman",0,0);
+		hero = new Hero("pacman",100,400);
 //		enemies = new ArrayList<Enemy>();
 		cam = new OrthographicCamera();
 		
