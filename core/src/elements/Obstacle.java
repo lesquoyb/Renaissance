@@ -24,7 +24,6 @@ public class Obstacle extends Objets{
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
 		super.dispose();
 	}
 

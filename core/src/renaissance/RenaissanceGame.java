@@ -18,6 +18,7 @@ public class RenaissanceGame extends Game {
    public static final PovDirection BUTTON_DPAD_LEFT = PovDirection.west;
 	@Override
 	public void create () {
+		if(Controllers.getControllers().size > 0)
 		controller = Controllers.getControllers().get(0);
 		setScreen(new TitleScreen());
 	}

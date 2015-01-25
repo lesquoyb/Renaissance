@@ -3,7 +3,6 @@ package elements;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -18,21 +17,15 @@ public class GameMap  {
 	public static TiledMapTileLayer layerSol;
 	public static float largeurTile;
 	public static float hauteurTile ;
-	public OrthographicCamera cam;
-public static Guide g1;
-
 	
 	public GameMap(String file){
 		obstacles = new ArrayList<Body>();
 		map = new TmxMapLoader().load(file);
-		renderer = new OrthogonalTiledMapRenderer(map,1/32f);
-		cam = new OrthographicCamera();
-		cam.setToOrtho(false, 50, 30);
+		renderer = new OrthogonalTiledMapRenderer(map);
 		layerSol =(TiledMapTileLayer) GameMap.map.getLayers().get("sol");
+		TiledMapTileLayer collisionLayer = (TiledMapTileLayer)map.getLayers().get("sol");
 		largeurTile = layerSol.getTileWidth();
 		hauteurTile = layerSol.getTileHeight();
-
-		
 		/*
         float largeur = collisionLayer.getTileHeight();
         float hauteur = collisionLayer.getTileWidth();
@@ -55,32 +48,20 @@ public static Guide g1;
 	        }
 		}
 		*/
-		g1 = new Guide("pacman",-120,100);
 		
 	}
 
 	
-	public void render() {
-		cam.update();
+	public void render(OrthographicCamera cam) {
 		renderer.setView(cam);
 		renderer.render();
-	}
 	
-	public void renderContent(SpriteBatch batch){
-		g1.render(batch);
-	}
-	
-	
-	
-	public void update(float delta){
-		g1.update(delta);
 	}
 
 
 	public void dispose() {
 		map.dispose();
 		renderer.dispose();
-		g1.dispose();
 	}
 
 }

@@ -78,7 +78,6 @@ public class Hero extends Personnages {
 		caseX = (int)x/(int)GameMap.largeurTile;
 		caseY = (int)y/(int)GameMap.hauteurTile;
 		caseX2 = caseX+1;
-		System.out.println(x + " y: " + y);
 
 		if(GameMap.layerSol.getCell(caseX, caseY) != null || GameMap.layerSol.getCell(caseX2, caseY) != null){
 			y = (caseY+1)*GameMap.hauteurTile;
