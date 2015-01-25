@@ -18,6 +18,7 @@ public class GameMap  {
 	public static float largeurTile;
 	public static float hauteurTile ;
 	public static TiledMapTileLayer layerNext;
+	public static TiledMapTileLayer layerStairs;
 
 	public GameMap(String file){
 		obstacles = new ArrayList<Body>();
@@ -25,6 +26,7 @@ public class GameMap  {
 		renderer = new OrthogonalTiledMapRenderer(map);
 		layerSol =(TiledMapTileLayer) map.getLayers().get("sol");
 		layerNext = (TiledMapTileLayer) map.getLayers().get("trigger");
+		layerStairs = (TiledMapTileLayer) map.getLayers().get("escalier");
 		if(layerSol != null){
 			largeurTile = layerSol.getTileWidth();
 			hauteurTile = layerSol.getTileHeight();

@@ -49,6 +49,7 @@ public class Hero extends Personnages {
 	
 	
 	public void update(float delta) {
+		time_elapsed += delta;
 		
 		float new_x = x;
 		float new_y = y;
@@ -82,8 +83,24 @@ public class Hero extends Personnages {
 		int newcase_x2 = (int)(new_x + (int)GameMap.largeurTile -1) / (int)GameMap.largeurTile; 
 		int newcase_y2 = (int)(new_y + (int)GameMap.hauteurTile -1) / (int)GameMap.hauteurTile; 
 		int pcase_x2 = (int)(x + (int)GameMap.largeurTile - 1) / (int)GameMap.largeurTile; 
+		int pcase_y2 = (int)(y + (int)GameMap.hauteurTile - 1) / (int)GameMap.hauteurTile; 
 
-		if(World.compteurScenes != World.nbScenes){
+		print(""+y + " : " + pcase_y);
+		
+		if(World.compteurScenes != World.nbScenes) {
+			
+			if ((GameMap.layerStairs. getCell(newcase_x2, pcase_y) != null) ) {
+				float progress_height = (new_x % GameMap.largeurTile) / GameMap.largeurTile * GameMap.hauteurTile;
+				if (new_y < (pcase_y) * GameMap.hauteurTile + progress_height)
+					new_y = (pcase_y) * GameMap.hauteurTile + progress_height;
+			}
+			
+			if ((GameMap.layerStairs. getCell(newcase_x, pcase_y) != null) ) {
+				new_y = (pcase_y2) * GameMap.hauteurTile+5;
+			}
+
+
+			
 			if ((GameMap.layerSol.getCell(newcase_x, pcase_y) == null) && (GameMap.layerSol.getCell(newcase_x2, pcase_y) == null)) {
 				if ((jumping == false) && (new_x != x)) {
 					if (time_between_step == 0) {
@@ -97,7 +114,12 @@ public class Hero extends Personnages {
 			}
 			if ((GameMap.layerSol.getCell(pcase_x, newcase_y) == null) && (GameMap.layerSol.getCell(pcase_x2, newcase_y) == null) && (GameMap.layerSol.getCell(pcase_x, newcase_y2) == null) && (GameMap.layerSol.getCell(pcase_x2, newcase_y2) == null)) {
 				y = new_y;
-			}	
+			} else {
+				y -= y % GameMap.hauteurTile;
+			}
+			
+			
+			
 			if ((GameMap.layerNext.getCell(newcase_x, pcase_y) != null) && (GameMap.layerNext.getCell(newcase_x2, pcase_y) != null)
 					&&	(GameMap.layerNext.getCell(pcase_x, newcase_y) != null) && (GameMap.layerNext.getCell(pcase_x2, newcase_y) != null) 
 					&&  (GameMap.layerNext.getCell(pcase_x, newcase_y2) != null) && (GameMap.layerNext.getCell(pcase_x2, newcase_y2) != null)) {
@@ -113,14 +135,15 @@ public class Hero extends Personnages {
 					y = 400;
 					jump_val = 0f;
 				}
-				
+
 		}
 
 		
 		
+		print(x + "-" + y);
 		time_between_step -= delta;
-		if (time_between_step < 0) time_between_step = 0;
-	
+		if (time_between_step < 0) time_between_step = 0;	
+		if (time_elapsed > 1) time_elapsed -= 1;	
 	}
 
 	@Override
