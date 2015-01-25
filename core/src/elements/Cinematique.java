@@ -59,21 +59,23 @@ public class Cinematique implements Screen{
 		if(index < texte.length()){
 			boolean ajouteLettre = false;
 	
-			if(delta >  Math.random()){
+			if(delta >  Math.random()/2){
 				ajouteLettre = true;
 			}
 			else{
 				oldDelta += delta;
-				if(oldDelta >  Math.random()){
+				if(oldDelta >  Math.random()/2){
 					ajouteLettre = true;
 					oldDelta=0;
 				}
 			}
 			
 			if(ajouteLettre){
-				son.play();
 				//si encore lettre affiche
-				if (index  < texte.length()){				
+				if (index  < texte.length()){
+					if(texte.charAt(index) != ' '){
+						son.play();
+					}
 					index ++;
 				}
 			}
