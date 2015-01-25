@@ -19,8 +19,8 @@ public class World implements Screen{
 	public static OrthographicCamera cam = new OrthographicCamera();
 	public static GameMap map;
 	public static int compteurScenes = 0;
-	public static final int nbScenes = 4;
-	public static final String scenes[] = {"maps/map2r.tmx","maps/map3r.tmx","maps/map4.tmx","maps/map5.tmx"};
+	public static final int nbScenes = 3;
+	public static final String scenes[] = {"maps/map2r.tmx","maps/map3r.tmx","maps/map5.tmx"};
 	//TODO transition map4
 
 	@Override
@@ -103,6 +103,7 @@ public class World implements Screen{
 		hero.dispose();
 		map.dispose();
 		spriteBatch.dispose();
+
 		//		for(Enemy it : enemies){
 		//			it.dispose();
 		//		}

@@ -27,7 +27,7 @@ public class RenaissanceGame extends Game {
 	
 	@Override
 	public void create () {
-		explosion =  Gdx.audio.newMusic(Gdx.files.internal("sons/Bruitages/explosion1_0.mp3"));
+		explosion =  Gdx.audio.newMusic(Gdx.files.internal("sons/Bruitages/explosion.wav"));
 		if(Controllers.getControllers().size > 0)
 			controller = Controllers.getControllers().get(0);
 		setScreen(new TitleScreen());

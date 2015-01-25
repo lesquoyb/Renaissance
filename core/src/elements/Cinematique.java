@@ -17,13 +17,7 @@ public class Cinematique implements Screen{
 	private int index;
 	private float oldDelta;
 	BitmapFont bmFont;
-	private Label label;
-	
-	
-	
-	
     private SpriteBatch batch;
-    private float height = 0;
     
 
 	public Cinematique(String texte) {
@@ -85,7 +79,9 @@ public class Cinematique implements Screen{
 
 	@Override
 	public void dispose() {
-		
+		son.dispose();
+		bmFont.dispose();
+		batch.dispose();
 	}
 
 	@Override

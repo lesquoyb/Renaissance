@@ -1,9 +1,9 @@
 package elements;
 
-import renaissance.World;
 import renaissance.RenaissanceGame;
+import renaissance.World;
+
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -154,6 +154,9 @@ public class Hero extends Personnages {
 		saut.dispose();
 		pas1.dispose();
 		pas2.dispose();
+		BGS_sewer.dispose();
+		BGS_out.dispose();
+		BGM_sewer.dispose();
 	}
 
 	@Override
