@@ -34,14 +34,16 @@ public class RenaissanceGame extends Game {
 		if(first){
 			
 			if(isOkPressed()){
-				setScreen(new Cinematique(Gdx.files.internal("textes/intro.txt").readString()));
+				setScreen(new Cinematique(Gdx.files.internal("textes/intro.txt").readString("utf-8")));
 				first = false;
 				second = true;
 			}	
 		}
 		else if (second){
-			setScreen(new World());
-			second = false;
+			if(isOkPressed()){
+				setScreen(new World());
+				second = false;
+			}
 		}
 			
 	}

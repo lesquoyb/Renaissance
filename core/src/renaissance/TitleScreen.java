@@ -11,7 +11,7 @@ public class TitleScreen implements Screen {
 
 
 	SpriteBatch sb;
-	Texture text;
+	public static Texture text;
 	public Game game;
 
 	@Override

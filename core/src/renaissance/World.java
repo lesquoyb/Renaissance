@@ -16,7 +16,7 @@ public class World implements Screen{
 	public static SpriteBatch spriteBatch;
 	private Hero hero;
 	//	private ArrayList<Enemy> enemies;
-	private OrthographicCamera cam;
+	public static OrthographicCamera cam = new OrthographicCamera();
 	public static GameMap map;
 	public static int compteurScenes = 0;
 	public static final int nbScenes = 3;
@@ -28,7 +28,6 @@ public class World implements Screen{
 		spriteBatch = new SpriteBatch();
 		hero = new Hero("pacman",100,400);
 //		enemies = new ArrayList<Enemy>();
-		cam = new OrthographicCamera();
 		int ratio = Math.min(Gdx.graphics.getWidth()/World.WIDTH, Gdx.graphics.getHeight()/World.HEIGHT);
 		cam.setToOrtho(false, WIDTH*ratio, HEIGHT*ratio);
 		cam.zoom = 1.8f;
