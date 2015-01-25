@@ -37,12 +37,12 @@ public class Guide extends Enemy {
 		translation.sub(new Vector2(deltaX,deltaY));
 
 
-		int caseX = (int)x/(int)GameMap.largeurTile;
+		/*int caseX = (int)x/(int)GameMap.largeurTile;
 		int caseX2 = caseX+1;
 		int caseY = (int)y/(int)GameMap.hauteurTile;
 		if(GameMap.layerSol.getCell(caseX, caseY) != null || GameMap.layerSol.getCell(caseX2, caseY) != null){
 			y = (caseY+1)*GameMap.hauteurTile;
-		}
+		}*/
 	}
 
 	@Override

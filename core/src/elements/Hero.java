@@ -26,6 +26,7 @@ public class Hero extends Personnages {
 	public static  Music BGM_sewer = Gdx.audio.newMusic(Gdx.files.internal("sons/BGM/Sewer.mp3"));
 	static final float step_cooldown = 0.5f;
 	float time_between_step = 0;
+	public boolean cinematique = false;
 
 	
 	public void print(String s) {
