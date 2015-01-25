@@ -43,7 +43,7 @@ public class RenaissanceGame extends Game {
 				return true;
 			}
 		}
-		return Gdx.input.isKeyPressed(Keys.SPACE) ;
+		return Gdx.input.isKeyJustPressed(Keys.SPACE) ;
 	}
 
 	public static boolean isDownPressed(){
