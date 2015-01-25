@@ -19,7 +19,7 @@ public class Hero extends Personnages {
 	private boolean jumping = false;
 	private Texture jump = null;
 	static float time_elapsed = 0;
-	private Texture currentTexture;
+	public Texture currentTexture;
 	public static  Music saut =Gdx.audio.newMusic(Gdx.files.internal("sons/Bruitages/Jump.ogg"));
 	public static  Music pas1 = Gdx.audio.newMusic(Gdx.files.internal("sons/Bruitages/stepwood_1.wav"));
 	public static  Music pas2 = Gdx.audio.newMusic(Gdx.files.internal("sons/Bruitages/stepwood_2.wav"));
@@ -171,6 +171,8 @@ public class Hero extends Personnages {
 		BGS_sewer.dispose();
 		BGS_out.dispose();
 		BGM_sewer.dispose();
+		currentTexture.dispose();
+		jump.dispose();
 	}
 
 	@Override

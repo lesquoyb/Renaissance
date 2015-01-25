@@ -6,10 +6,12 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 
 import elements.GameMap;
 import elements.Guide;
 import elements.Hero;
+import elements.TextureFactory;
 
 public class World implements Screen{
 
@@ -72,9 +74,18 @@ public class World implements Screen{
 		
 		if(compteurScenes==3){
 			hero.cinematique = true;
-			while(hero.x < WIDTH)
+			hero.currentTexture = TextureFactory.getTexture("heros-sprite-stand-winged");
+			Vector2 translation = new Vector2(100,0);
+			float deltaX = translation.x  * delta * 2;
+			hero.x += deltaX;
+			if(hero.x > Gdx.graphics.getWidth())
 			{
-			hero.x += 10; 
+				Gdx.gl.glClearColor(0, 0, 0, 1);
+				Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+				
+				spriteBatch.begin();
+					spriteBatch.draw(new Texture(Gdx.files.internal("images/.png")),0, 0);
+				spriteBatch.end();
 			}
 		
 		}
