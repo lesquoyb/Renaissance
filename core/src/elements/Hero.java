@@ -106,7 +106,12 @@ public class Hero extends Personnages {
 		}
 	
 		
-	
+		
+		if(Gdx.input.isKeyPressed(Keys.DOWN))
+		{
+			System.out.println("lolo");
+			y -= velocity * delta;
+		}
 		caseX = (int)x/(int)GameMap.largeurTile;
 		caseX2 = caseX+1;
 		caseY = (int)y/(int)GameMap.hauteurTile;
@@ -120,7 +125,6 @@ public class Hero extends Personnages {
 		caseX = (int)x/(int)GameMap.largeurTile;
 		caseY = (int)y/(int)GameMap.hauteurTile;
 		caseX2 = caseX+1;
-
 
 		if(GameMap.layerSol.getCell(caseX, caseY) != null || GameMap.layerSol.getCell(caseX2, caseY) != null){
 			y = (caseY+1)*GameMap.hauteurTile;
@@ -151,8 +155,6 @@ public class Hero extends Personnages {
 		sb.draw(texture,0,0);
 	}
 	
-	@Override
-	public void update()
-	{
-	}
+	
+	
 }

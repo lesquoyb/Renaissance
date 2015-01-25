@@ -7,8 +7,8 @@ public class Autonome extends Enemy {
 
 	}
 	
-	public void update(){
-		//TOUT DOUX LOL 
+	public void update(float delta){
+		//TOUT DOUX LOL ^^
 		
 	}
 	
