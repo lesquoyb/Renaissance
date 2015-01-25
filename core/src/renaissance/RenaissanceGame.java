@@ -45,6 +45,7 @@ public class RenaissanceGame extends Game {
 				second = false;
 			}
 		}
+		
 			
 	}
 
@@ -60,7 +61,7 @@ public class RenaissanceGame extends Game {
 	public static boolean isDownPressed(){
 		if(controller != null){
 			//if(controller.getAxis())
-			if(controller.getButton(BUTTON_DPAD_DOWN.ordinal())){
+			if(controller.getButton(4)){
 				return true;
 			}
 		}
@@ -80,7 +81,7 @@ public class RenaissanceGame extends Game {
 
 	public static boolean isRightPressed(){
 		if(controller != null){
-			if(controller.getButton(BUTTON_DPAD_RIGHT.ordinal())){
+			if(controller.getButton(5)){
 				return true;
 			}
 		}

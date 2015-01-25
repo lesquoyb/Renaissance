@@ -1,14 +1,13 @@
 package elements;
 
 import renaissance.World;
-
+import renaissance.RenaissanceGame;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.controllers.Controller;
-import com.badlogic.gdx.controllers.Controllers;
-import com.badlogic.gdx.controllers.PovDirection;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+
 
 public class Hero extends Personnages {
 
@@ -27,11 +26,6 @@ public class Hero extends Personnages {
 	public static  Music BGM_sewer = Gdx.audio.newMusic(Gdx.files.internal("sons/BGM/Sewer.mp3"));
 	static final float step_cooldown = 0.5f;
 	float time_between_step = 0;
-	public static Controller controller;
-	public static final int BUTTON_A = 0;
-	public static final PovDirection BUTTON_DPAD_DOWN = PovDirection.south;
-	public static final PovDirection BUTTON_DPAD_RIGHT = PovDirection.east;
-	public static final PovDirection BUTTON_DPAD_LEFT = PovDirection.west;
 
 	
 	public void print(String s) {
@@ -61,13 +55,12 @@ public class Hero extends Personnages {
 		float new_x = x;
 		float new_y = y;
 
-		controller = Controllers.getControllers().get(0);
 
-		if(Gdx.input.isKeyPressed(Keys.LEFT)||controller.getButton(BUTTON_DPAD_LEFT.ordinal())) { new_x -= velocity * delta; }
-		if(Gdx.input.isKeyPressed(Keys.RIGHT)||controller.getButton(5)) { new_x += velocity * delta;}
-		if(Gdx.input.isKeyPressed(Keys.DOWN)||(controller.getButton(4))) { new_y -= velocity * delta;}
+		if(RenaissanceGame.isLeftPressed()) { new_x -= velocity * delta; }
+		if(RenaissanceGame.isRightPressed()) { new_x += velocity * delta;}
+		if(RenaissanceGame.isDownPressed()) { new_y -= velocity * delta;}
 		
-		if(((controller.getButton(BUTTON_A))||Gdx.input.isKeyJustPressed(Keys.SPACE)) && !jumping)  {
+		if((RenaissanceGame.isOkPressed()) && !jumping)  {
 			
 			jumping = true;
 			saut.play();
