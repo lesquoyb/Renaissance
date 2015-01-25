@@ -17,21 +17,27 @@ public class GameMap  {
 	public static TiledMapTileLayer layerSol;
 	public static float largeurTile;
 	public static float hauteurTile ;
+	public static TiledMapTileLayer layerNext;
 
 	public GameMap(String file){
 		obstacles = new ArrayList<Body>();
 		map = new TmxMapLoader().load(file);
 		renderer = new OrthogonalTiledMapRenderer(map);
-		layerSol = (TiledMapTileLayer) map.getLayers().get("colision");
-		largeurTile = layerSol.getTileWidth();
-		hauteurTile = layerSol.getTileHeight();
+		layerSol =(TiledMapTileLayer) map.getLayers().get("sol");
+		layerNext = (TiledMapTileLayer) map.getLayers().get("trigger");
+		if(layerSol != null){
+			largeurTile = layerSol.getTileWidth();
+			hauteurTile = layerSol.getTileHeight();
+		}
 
 	}
 
 
 	public void render(OrthographicCamera cam) {
+		
 		renderer.setView(cam);
 		renderer.render();
+//		renderer.
 
 	}
 
