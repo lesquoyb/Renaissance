@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import elements.GameMap;
@@ -14,7 +15,8 @@ public class World implements Screen{
 	public static final int HEIGHT = 600;//1440; 
 	public static final int WIDTH = 800;//4480;
 	public static SpriteBatch spriteBatch;
-	private Hero hero;
+	public static Hero hero;
+	private static Texture jump = null;
 	//	private ArrayList<Enemy> enemies;
 	public static OrthographicCamera cam = new OrthographicCamera();
 	public static GameMap map;
@@ -26,7 +28,7 @@ public class World implements Screen{
 	@Override
 	public void show() {
 		spriteBatch = new SpriteBatch();
-		hero = new Hero("pacman",100,400);
+		hero = new Hero("heros-sprite-spawn",100,150);
 //		enemies = new ArrayList<Enemy>();
 		int ratio = Math.min(Gdx.graphics.getWidth()/World.WIDTH, Gdx.graphics.getHeight()/World.HEIGHT);
 		cam.setToOrtho(false, WIDTH*ratio, HEIGHT*ratio);

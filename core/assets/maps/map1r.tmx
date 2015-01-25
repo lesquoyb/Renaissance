@@ -3,7 +3,7 @@
  <tileset firstgid="1" name="zone" tilewidth="32" tileheight="32">
   <image source="zone.png" width="1280" height="736"/>
  </tileset>
- <layer name="background" width="41" height="23" visible="0">
+ <layer name="background" width="41" height="23">
   <data encoding="base64" compression="zlib">
    eJwt11MQHmcAhtHYtm3btm3btm07aWy2QRu0sW3bbIM2ZtPTyb+zZ96LnZ19Lr8NGiRIkGAEJwQhCUVowhCWcIQnAhGJRGSiEJVoRCcGMYlFbOIQl3jEJwEJSURikpCUZCQnBSlJRWrSBPlxpSUd6clARjKRmSxkJRvZyUFOcpGbPOQlH/kpQEEKUZgiFKUYxSlBSUpRmjKUpRzlqUBFKlGZKoHGqlSjOjWoSS1qU4e61KM+DWhIIxrThKY0ozktaEkrWtOGtrSjPR3oSCc604WudKM7PehJL3rTJ9DYl370ZwADGcRghjCUYQxnBCMZxWjGMJZxjGcCE5nEZKYwlWlMZwYzmcVs5vATc5nHfBawkEUsDjQuYSnLWM4KVrKK1axhLev4mV9YzwY2solf+Y3NbGEr2/idP9jODnayi93sYS/72M8BDnKIwxzhaKDxGMc5wUlOcZoznOUc57nARS5xmStc5RrXucFNbnGbO9zlHvd5wEMe8ZgnPOUZf/IXz3nBS17xd6DxH17zhre84z0f+MgnPvOFr3zjX77//3JQN8EITghCEorQhCEs4QhPBCISichEISrRiE4MYhKL2MQJ+qMxro1HfBKQkEQkJglJSUZyUpCSVKQmDWlJR3oykJFMZCYLWclGdnKQk1zkJg95yUd+ClCQQhSmSKCxqC1GcUpQklKUpgxlKUd5KlCRSlSmClWpRnVqUJNa1KYOdalHfRrQkEY0pglNaUZzWtCSVrSmTaCxrW1HezrQkU50pgtd6UZ3etCTXvSmD33pR38GMJBBDGYIQxnGcEYwklGMZgxjGcd4JjCRSUxmSqBxqp3GdGYwk1nMZg4/MZd5zGcBC1nEYpawlGUsZwUrWcVq1rCWdfzML6xnAxvZxK/8xma2sJVt/B5o/MNuZwc72cVu9rCXfeznAAc5xGGOcJRjHOcEJznFac5wlnOc5wIXucRlrnCVa1znBje5xW3ucDfQeM/e5wEPecRjnvCUZ/zJXzznBS95xd/8w2ve8JZ3vOcDH/nEZ77wlW/8y/f/v++gEJRgBCcEIQlFaMIE+9EY1oYjPBGISCQiE4WoRCM6MYhJLGITh7jEIz4JSEgiEpOEpCQjOSlISSpSk4a0pCM9GchIJjKTJdCY1WYjOznISS5yk4e85CM/BShIIQpThKIUozglKEkpSlOGspSjPBWoSCUqU4WqVKM6NahJLWpTJ9BY19ajPg1oSCMa04SmNKM5LWhJK1rThra0oz0d6EgnOtOFrnSjOz3oSS9604e+9KM/AxjIIAYzJNA41A5jOCMYyShGM4axjGM8E5jIJCYzhalMYzozmMksZjOHn5jLPOazgIUsYjFLWMoylrOClaxidaBxjV3LOn7mF9azgY1s4ld+YzNb2Mo2fucPtrODnexiN3vYyz72c4CDHOIwRzjKMY5zgpOc4jRnOBtoPGfPc4GLXOIyV7jKNa5zg5vc4jZ3uMs97vOAhzziMU94yjP+5C+e84KXvOJv/uE1b3jLO97zgY+Bxk/2M1/4yjf+5fv/z/1ABCUYwQlBSEIRmjCEJRzhiUBEIhGZKEQlGtGJQUxiEZs4xCUe8UlAQhKRmCTBfzQmtclITgpSkorUpCEt6UhPBjKSicxkISvZyE4OcpKL3OQhL/nITwEKUojCFKEoxShOCUpSitKUCTSWteUoTwUqUonKVKEq1ahODWpSi9rUoS71qE8DGtKIxjShKc1oTgta0orWtKEt7WhPBzrSic50CTR2td3oTg960ove9KEv/ejPAAYyiMEMYSjDGM4IRjKK0YxhLOMYzwQmMonJTGEq05jODGYyi9nMCTT+B42KsMc=
   </data>
@@ -13,12 +13,12 @@
    eJzt1TtOAlEYhuEZpiBxA/RUdiYWIoKgIkgCclF0EO1dgKh4BcTCzi1QW9GxBK2t6EzYgNRWvoTfmDgFzZj5J5kveXK6k7c6xzCCBQs2b684sWa07tP4bdTaGjH1N6Z90Hjqg8ZnHzQOpfHJ1Nv4IW0DOcem10XOhUOztpE0LoS8LnJuSRoNOZcVNto01bEojQ2FjT+rSOOD4saWNL4obuxL47vixjdp/FLcOJHGqMtv+Ar3xbCKONaQQBLrSCGNDWxiCxlsI4scdpD/8xcWUMQuSiijgir2sI8aDnAIG3UcTd8FHFvO/9VtZ2jiHBe4RAtXuMYNbnGHe7TRQXf6LqCHx39q+wZtgEKl
   </data>
  </layer>
- <layer name="escalier" width="41" height="23" visible="0">
+ <layer name="escalier" width="41" height="23">
   <data encoding="base64" compression="zlib">
    eJztzjENAAAIA7AlaMK/NYIAbp5WQRMAAABW1/eAywBo2QA5
   </data>
  </layer>
- <layer name="trigger" width="41" height="23" visible="0">
+ <layer name="trigger" width="41" height="23">
   <data encoding="base64" compression="zlib">
    eJztzkEVABAURcF3CEJT2tCGNiz9BJb8xZ0EIwEAAAB3JUg1/F7cNft158dhv+n8uOy3nR9TlHL8vcBrB6+WBjI=
   </data>
