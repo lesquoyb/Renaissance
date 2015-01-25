@@ -12,11 +12,6 @@ abstract class ElementJeu  {
 	public final float hauteur;
 	public float x;
 	public float y;
-	/*
-	public Body body; 
-	public FixtureDef fixturedef;
-	public BodyDef bodydef;
-	*/
 	
 	public ElementJeu(String s, float x, float y)
 	{
@@ -26,15 +21,6 @@ abstract class ElementJeu  {
 		this.y = y;
 		largeur = texture.getWidth();
 		hauteur = texture.getHeight();
-		/*
-		bodydef = new BodyDef();
-		bodydef.position.x = x;
-		bodydef.position.y = y ;
-		fixturedef = new FixtureDef();
-		PolygonShape shape = new PolygonShape();
-		shape.setAsBox(texture.getWidth()/2, texture.getHeight()/2);
-		fixturedef.shape = shape;
-		*/
 	}
 
 	public void render(SpriteBatch s)
