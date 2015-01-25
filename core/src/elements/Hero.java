@@ -1,5 +1,6 @@
 package elements;
 
+import renaissance.RenaissanceGame;
 import renaissance.World;
 
 import com.badlogic.gdx.Gdx;
@@ -101,9 +102,8 @@ public class Hero extends Personnages {
 					&&	(GameMap.layerNext.getCell(pcase_x, newcase_y) != null) && (GameMap.layerNext.getCell(pcase_x2, newcase_y) != null) 
 					&&  (GameMap.layerNext.getCell(pcase_x, newcase_y2) != null) && (GameMap.layerNext.getCell(pcase_x2, newcase_y2) != null)) {
 					
-					System.out.println("collision");
 					if(World.compteurScenes <= World.compteurScenes){
-						System.out.println("qlmsdkjfq mlsj");
+						
 						World.map = new GameMap(World.scenes[World.compteurScenes]);
 						World.compteurScenes++;
 					}else{

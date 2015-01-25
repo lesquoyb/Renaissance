@@ -7,15 +7,19 @@ import com.badlogic.gdx.controllers.Controller;
 import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.controllers.PovDirection;
 
+import elements.Cinematique;
+
 public class RenaissanceGame extends Game {
 
 
 	private boolean first = true;
+	private boolean second = false;
 	public static Controller controller;
 	public static final int BUTTON_A = 0;
 	public static final PovDirection BUTTON_DPAD_DOWN = PovDirection.south;
 	public static final PovDirection BUTTON_DPAD_RIGHT = PovDirection.east;
 	public static final PovDirection BUTTON_DPAD_LEFT = PovDirection.west;
+	
 	
 	@Override
 	public void create () {
@@ -28,13 +32,18 @@ public class RenaissanceGame extends Game {
 	public void render() {
 		super.render();
 		if(first){
+			
 			if(isOkPressed()){
-				setScreen(new World());
+				setScreen(new Cinematique(Gdx.files.internal("textes/intro.txt").readString()));
 				first = false;
-			}			
+				second = true;
+			}	
 		}
-
-
+		else if (second){
+			setScreen(new World());
+			second = false;
+		}
+			
 	}
 
 	public static boolean isOkPressed(){
@@ -43,11 +52,12 @@ public class RenaissanceGame extends Game {
 				return true;
 			}
 		}
-		return Gdx.input.isKeyPressed(Keys.SPACE) ;
+		return Gdx.input.isKeyJustPressed(Keys.SPACE) ;
 	}
 
 	public static boolean isDownPressed(){
 		if(controller != null){
+			//if(controller.getAxis())
 			if(controller.getButton(BUTTON_DPAD_DOWN.ordinal())){
 				return true;
 			}
