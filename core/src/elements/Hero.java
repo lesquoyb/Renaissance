@@ -14,12 +14,16 @@ public class Hero extends Personnages {
 	public float jump_val = 0;
 	private static final  float jump_max = 50;
 	private boolean jumping = false;
-	private String step= "";
 	static float time_elapsed = 0;
-	public static final Music saut =Gdx.audio.newMusic(Gdx.files.internal("sons/Bruitages/Jump.ogg"));
-	public static final Music pas1 =Gdx.audio.newMusic(Gdx.files.internal("sons/Bruitages/stepwood_1.wav"));
-	public static final Music pas2 =Gdx.audio.newMusic(Gdx.files.internal("sons/Bruitages/stepwood_2.wav"));
-	private boolean marche = false;
+	public static  Music saut =Gdx.audio.newMusic(Gdx.files.internal("sons/Bruitages/Jump.ogg"));
+	public static  Music pas1 = Gdx.audio.newMusic(Gdx.files.internal("sons/Bruitages/stepwood_1.wav"));
+	public static  Music pas2 = Gdx.audio.newMusic(Gdx.files.internal("sons/Bruitages/stepwood_2.wav"));
+	public boolean play_pas1 = true;
+	public static  Music BGS_sewer = Gdx.audio.newMusic(Gdx.files.internal("sons/BGS/Drips.ogg"));
+	public static  Music BGS_out = Gdx.audio.newMusic(Gdx.files.internal("sons/BGS/Wind.ogg"));
+	public static  Music BGM_sewer = Gdx.audio.newMusic(Gdx.files.internal("sons/BGM/Sewer.mp3"));
+	static final float step_cooldown = 0.5f;
+	float time_between_step = 0;
 
 	
 	public void print(String s) {
@@ -30,9 +34,15 @@ public class Hero extends Personnages {
 	
 	public Hero(String s, float x, float y) {
 		super(s, x, y);	
-		 pas1.setLooping(true);
-		 pas2.setLooping(true);
+		 pas1.setLooping(false);
+		 pas2.setLooping(false);
 		 saut.setLooping(false);
+		 BGS_sewer.setLooping(true);
+		 BGS_sewer.setPan(0, .1f);
+		 BGS_out.setLooping(true);
+		 BGS_out.setPan(0, .1f);
+		 BGS_sewer.play();
+		 BGM_sewer.play();
 
 	}
 	
@@ -43,18 +53,10 @@ public class Hero extends Personnages {
 		float new_y = y;
 
 
-		if(Gdx.input.isKeyPressed(Keys.LEFT)) { new_x -= velocity * delta; marche = true; }
-		if(Gdx.input.isKeyPressed(Keys.RIGHT)) { new_x += velocity * delta;	marche = true;}
-		if(Gdx.input.isKeyPressed(Keys.DOWN)) { new_y -= velocity * delta; marche =true;}
+		if(Gdx.input.isKeyPressed(Keys.LEFT)) { new_x -= velocity * delta; }
+		if(Gdx.input.isKeyPressed(Keys.RIGHT)) { new_x += velocity * delta; }
+		if(Gdx.input.isKeyPressed(Keys.DOWN)) { new_y -= velocity * delta; }
 		
-		if(marche){
-			//pas1.play();
-			//pas2.play();
-		}
-		else{
-			//pas1.pause();
-			//pas2.pause();
-		}
 		if(Gdx.input.isKeyJustPressed(Keys.SPACE) && !jumping) {
 			jumping = true;
 			saut.play();
@@ -79,16 +81,20 @@ public class Hero extends Personnages {
 		int newcase_x2 = (int)(new_x + (int)GameMap.largeurTile -1) / (int)GameMap.largeurTile; 
 		int newcase_y2 = (int)(new_y + (int)GameMap.hauteurTile -1) / (int)GameMap.hauteurTile; 
 		int pcase_x2 = (int)(x + (int)GameMap.largeurTile - 1) / (int)GameMap.largeurTile; 
-//		int pcase_y2 = (int)(y + (int)GameMap.hauteurTile - 1) / (int)GameMap.hauteurTile; 
-//		
-//		print("hero on cell : " + pcase_x + "-" + pcase_y);
+
 		if(World.compteurScenes != World.nbScenes){
 			if ((GameMap.layerSol.getCell(newcase_x, pcase_y) == null) && (GameMap.layerSol.getCell(newcase_x2, pcase_y) == null)) {
-//				print("x");
+				if ((jumping == false) && (new_x != x)) {
+					if (time_between_step == 0) {
+						if (play_pas1) pas1.play();
+						else pas2.play();
+						time_between_step = step_cooldown;
+						play_pas1 = !play_pas1;
+					}
+				}
 				x = new_x;
 			}
 			if ((GameMap.layerSol.getCell(pcase_x, newcase_y) == null) && (GameMap.layerSol.getCell(pcase_x2, newcase_y) == null) && (GameMap.layerSol.getCell(pcase_x, newcase_y2) == null) && (GameMap.layerSol.getCell(pcase_x2, newcase_y2) == null)) {
-//				print("y");
 				y = new_y;
 			}	
 			if ((GameMap.layerNext.getCell(newcase_x, pcase_y) != null) && (GameMap.layerNext.getCell(newcase_x2, pcase_y) != null)
@@ -112,7 +118,8 @@ public class Hero extends Personnages {
 
 		
 		
-
+		time_between_step -= delta;
+		if (time_between_step < 0) time_between_step = 0;
 	
 	}
 
