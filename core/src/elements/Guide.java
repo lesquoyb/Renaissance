@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Guide extends Enemy {
 
-	float var=50,xCible=var,yCible=0;
+	float var=50,xCible=var,yCible=var;
 	public Vector2 translation = new Vector2();
 
 	public Guide(String s, float x, float y) {
@@ -18,7 +18,7 @@ public class Guide extends Enemy {
 		y -= Hero.GRAVITE * delta;
 
 
-		if(x > xCible)
+		/*if(x > xCible)
 		{
 			xCible = -var;
 			yCible = 0;
@@ -26,7 +26,7 @@ public class Guide extends Enemy {
 		else{
 			xCible = var;
 			yCible = 0;
-		}
+		}*/
 
 
 		translation = new Vector2(xCible,yCible);
