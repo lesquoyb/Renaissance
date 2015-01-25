@@ -21,8 +21,13 @@ public class World implements Screen{
 	@Override
 	public void show() {
 		spriteBatch = new SpriteBatch();
+<<<<<<< HEAD
+		hero = new Hero("pacman",100,400);
+//		enemies = new ArrayList<Enemy>();
+=======
 		hero = new Hero("pacman",0,0);
 		//		enemies = new ArrayList<Enemy>();
+>>>>>>> origin/master
 		cam = new OrthographicCamera();
 
 		cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
