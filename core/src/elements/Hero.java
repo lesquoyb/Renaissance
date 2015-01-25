@@ -16,7 +16,7 @@ public class Hero extends Personnages {
 	private boolean jumping = false;
 	private String step= "";
 	static float time_elapsed = 0;
-	public static final Music saut =Gdx.audio.newMusic(Gdx.files.internal("sons/Bruitages/jump.wav"));
+	public static final Music saut =Gdx.audio.newMusic(Gdx.files.internal("sons/Bruitages/Jump.ogg"));
 	public static final Music pas1 =Gdx.audio.newMusic(Gdx.files.internal("sons/Bruitages/stepwood_1.wav"));
 	public static final Music pas2 =Gdx.audio.newMusic(Gdx.files.internal("sons/Bruitages/stepwood_2.wav"));
 	private boolean marche = false;
@@ -32,7 +32,7 @@ public class Hero extends Personnages {
 		super(s, x, y);	
 		 pas1.setLooping(true);
 		 pas2.setLooping(true);
-		 saut.setLooping(true);
+		 saut.setLooping(false);
 
 	}
 	
@@ -57,17 +57,16 @@ public class Hero extends Personnages {
 		}
 		if(Gdx.input.isKeyJustPressed(Keys.SPACE) && !jumping) {
 			jumping = true;
+			saut.play();
 			jump_val = jump_max;
 		}
 		
 		if ( jumping ) {
 			if (jump_val > -jump_max) {
 				jump_val -= GRAVITE * delta * GameMap.hauteurTile;
-				saut.play();
 			} else {
 				jump_val = 0;
 				jumping = false;
-				saut.pause();
 			}
 		}
 		new_y -= GRAVITE * delta * GameMap.hauteurTile;
