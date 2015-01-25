@@ -5,6 +5,7 @@ import renaissance.World;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 
@@ -16,7 +17,9 @@ public class Hero extends Personnages {
 	public float jump_val = 0;
 	private static final  float jump_max = 50;
 	private boolean jumping = false;
+	private Texture jump = null;
 	static float time_elapsed = 0;
+	private Texture currentTexture;
 	public static  Music saut =Gdx.audio.newMusic(Gdx.files.internal("sons/Bruitages/Jump.ogg"));
 	public static  Music pas1 = Gdx.audio.newMusic(Gdx.files.internal("sons/Bruitages/stepwood_1.wav"));
 	public static  Music pas2 = Gdx.audio.newMusic(Gdx.files.internal("sons/Bruitages/stepwood_2.wav"));
@@ -46,6 +49,7 @@ public class Hero extends Personnages {
 		 BGS_out.setPan(0, .1f);
 		 BGS_sewer.play();
 		 BGM_sewer.play();
+		 currentTexture = texture;
 
 	}
 	
@@ -64,16 +68,20 @@ public class Hero extends Personnages {
 		if((RenaissanceGame.isOkPressed()) && !jumping)  {
 			
 			jumping = true;
-			saut.play();
+			//saut.play();
 			jump_val = jump_max;
 		}
 		
 		if ( jumping ) {
 			if (jump_val > -jump_max) {
+				if(jump != null){
+					currentTexture = jump;
+				}
 				jump_val -= GRAVITE * delta * GameMap.hauteurTile;
 			} else {
 				jump_val = 0;
 				jumping = false;
+				currentTexture = texture;
 			}
 		}
 		new_y -= GRAVITE * delta * GameMap.hauteurTile;
@@ -130,6 +138,11 @@ public class Hero extends Personnages {
 					if(World.compteurScenes <= World.compteurScenes){
 						
 						World.map = new GameMap(World.scenes[World.compteurScenes]);
+						if(World.compteurScenes == 0 ){
+							texture.dispose();
+							texture = TextureFactory.getTexture("heros-sprite-stand");
+							jump = TextureFactory.getTexture("heros-sprite-jump");
+						}
 						World.compteurScenes++;
 					}else{
 						//TODO screen victoire.
@@ -162,7 +175,7 @@ public class Hero extends Personnages {
 
 	@Override
 	public void render(SpriteBatch sb){
-		sb.draw(texture,0,0);
+		sb.draw(currentTexture,0,0);
 	}
 	
 	

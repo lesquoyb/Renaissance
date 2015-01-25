@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import elements.GameMap;
@@ -15,7 +16,8 @@ public class World implements Screen{
 	public static final int HEIGHT = 600;//1440; 
 	public static final int WIDTH = 800;//4480;
 	public static SpriteBatch spriteBatch;
-	private Hero hero;
+	public static Hero hero;
+	private static Texture jump = null;
 	//	private ArrayList<Enemy> enemies;
 	public static OrthographicCamera cam = new OrthographicCamera();
 	public static GameMap map;
@@ -23,13 +25,13 @@ public class World implements Screen{
 	public static final int nbScenes = 3;
 	public static final String scenes[] = {"maps/map2r.tmx","maps/map3r.tmx","maps/map5.tmx"};
 	//TODO transition map4
-	public static Guide guide;
 	
 	@Override
 	public void show() {
 		spriteBatch = new SpriteBatch();
-		hero = new Hero("pacman",100,400);
-		guide = new Guide("pacman",0,0);
+
+		hero = new Hero("heros-sprite-spawn",100,150);
+
 //		enemies = new ArrayList<Enemy>();
 		int ratio = Math.min(Gdx.graphics.getWidth()/World.WIDTH, Gdx.graphics.getHeight()/World.HEIGHT);
 		cam.setToOrtho(false, WIDTH*ratio, HEIGHT*ratio);
@@ -86,7 +88,6 @@ public class World implements Screen{
 		{
 			hero.update(delta);
 		}
-		guide.update(delta);
 		//for (Enemy it : enemies) {
 		//			it.update();
 		//		}
@@ -118,7 +119,6 @@ public class World implements Screen{
 	@Override
 	public void dispose() {
 		hero.dispose();
-		guide.dispose();
 		map.dispose();
 		spriteBatch.dispose();
 
