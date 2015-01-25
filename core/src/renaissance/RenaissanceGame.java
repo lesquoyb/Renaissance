@@ -48,6 +48,7 @@ public class RenaissanceGame extends Game {
 
 	public static boolean isDownPressed(){
 		if(controller != null){
+			//if(controller.getAxis())
 			if(controller.getButton(BUTTON_DPAD_DOWN.ordinal())){
 				return true;
 			}

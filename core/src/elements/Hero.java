@@ -1,5 +1,6 @@
 package elements;
 
+import renaissance.RenaissanceGame;
 import renaissance.World;
 
 import com.badlogic.gdx.Gdx;
@@ -43,19 +44,19 @@ public class Hero extends Personnages {
 		float new_y = y;
 
 
-		if(Gdx.input.isKeyPressed(Keys.LEFT)) { new_x -= velocity * delta; marche = true; }
-		if(Gdx.input.isKeyPressed(Keys.RIGHT)) { new_x += velocity * delta;	marche = true;}
-		if(Gdx.input.isKeyPressed(Keys.DOWN)) { new_y -= velocity * delta; marche =true;}
+		if(RenaissanceGame.isLeftPressed()) { new_x -= velocity * delta; marche = true; }
+		if(RenaissanceGame.isRightPressed()) { new_x += velocity * delta;	marche = true;}
+		if(RenaissanceGame.isDownPressed()) { new_y -= velocity * delta; marche =true;}
 		
 		if(marche){
-			//pas1.play();
-			//pas2.play();
+//			pas1.play();
+//			pas2.play();
 		}
 		else{
-			//pas1.pause();
-			//pas2.pause();
+//			pas1.pause();
+//			pas2.pause();
 		}
-		if(Gdx.input.isKeyJustPressed(Keys.SPACE) && !jumping) {
+		if(RenaissanceGame.isOkPressed() && !jumping) {
 			jumping = true;
 			saut.play();
 			jump_val = jump_max;
@@ -95,9 +96,8 @@ public class Hero extends Personnages {
 					&&	(GameMap.layerNext.getCell(pcase_x, newcase_y) != null) && (GameMap.layerNext.getCell(pcase_x2, newcase_y) != null) 
 					&&  (GameMap.layerNext.getCell(pcase_x, newcase_y2) != null) && (GameMap.layerNext.getCell(pcase_x2, newcase_y2) != null)) {
 					
-					System.out.println("collision");
 					if(World.compteurScenes <= World.compteurScenes){
-						System.out.println("qlmsdkjfq mlsj");
+						
 						World.map = new GameMap(World.scenes[World.compteurScenes]);
 						World.compteurScenes++;
 					}else{
