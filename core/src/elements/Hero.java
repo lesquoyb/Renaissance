@@ -99,6 +99,8 @@ public class Hero extends Personnages {
 			y = (caseY-1)*GameMap.hauteurTile;
 			jumping = false;
 		}
+		
+		
 
 		
 	}
